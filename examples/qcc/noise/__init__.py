@@ -1,7 +1,7 @@
 #
 # Christoph Lehner 2019
 #
-import sqc.noise.model
+import qcc.noise.model
 
 def sample(nm, op, s, n, mask = None):
     rc={}

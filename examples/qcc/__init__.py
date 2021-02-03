@@ -1,8 +1,8 @@
 
 import numpy as np
-from sqc.state import state
-from sqc.operator import operator
-import sqc.noise
+from qcc.state import state
+from qcc.operator import operator
+import qcc.noise
 
 def seed(s):
     np.random.seed(s)

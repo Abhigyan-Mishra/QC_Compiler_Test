@@ -1,7 +1,7 @@
 #
 # Christoph Lehner 2019
 #
-from sqc.operator import _X
+from qcc.operator import _X
 import numpy as np
 
 class generic:

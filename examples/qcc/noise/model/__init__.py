@@ -1,8 +1,8 @@
 #
 # Christoph Lehner 2019
 #
-from sqc.noise.model.generic import generic
-from sqc.state import state
+from qcc.noise.model.generic import generic
+from qcc.state import state
 import numpy as np
 
 def one_qubit_diag(i, s, zerofac, onefac, o):

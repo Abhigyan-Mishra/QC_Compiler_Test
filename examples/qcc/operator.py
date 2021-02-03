@@ -1,7 +1,7 @@
 import numpy as np
 import copy
 import time
-from sqc.state import state
+from qcc.state import state
 
 def _notbit(l,i):
     return l ^ (2**i)

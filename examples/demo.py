@@ -4,7 +4,7 @@ import qcc
 Nbits=1
 
 # Create Bell state
-s=sqc.operator(Nbits).H(0)* sqc.state(Nbits)
+s=qcc.operator(Nbits).H(0)* qcc.state(Nbits)
 
 # Print state
 print("Bell state")
