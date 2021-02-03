@@ -7,7 +7,7 @@ Nbits=1
 s=qcc.operator(Nbits).H(0)* qcc.state(Nbits)
 
 # Print state
-print("Bell state")
+print("Qubit state")
 print(s)
 
 # Perform 10 measurements
