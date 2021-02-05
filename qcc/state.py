@@ -58,7 +58,8 @@ class state:
         self.v = np.real_if_close(self.v,tol=100)
         self.v /= np.sqrt(np.linalg.norm(self.v))
         return self
-
+    # Input is a quantum state vector of size 2^n
+    # Output is a sampled state of n bits, represented with a string, eg. '0101'
     def measure(self, b):
         A=sum([ self.v[i]*self.v[i].conj() for i in range(self.N) if i & 2**b != 0 ]).real
         B=sum([ self.v[i]*self.v[i].conj() for i in range(self.N) if i & 2**b == 0 ]).real

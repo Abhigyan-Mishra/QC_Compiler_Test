@@ -42,26 +42,27 @@ def _IF(cif,s,o):
     o.skip = False if o.cif is None else o.cif != o.cval
     return s
 
+#Hadamard Gate
 def _H(i,s,o):
     if o.skip:
         return s
     n=s.nbits
     c=1.0/2.0**0.5
     return state(n,c*(s.v[o.sbmask0[i]] + o.hmask[i]*s.v[o.sbmask1[i]]),basis=s.basis)
-
+#Bit Flip gate
 def _X(i,s,o):
     if o.skip:
         return s
     n=s.nbits
     return state(n,s.v[o.notmask[i]],basis=s.basis)
-
+#Parametric Z Gate
 def _Rz(i,phi,s,o):
     if o.skip:
         return s
     n=s.nbits
     return state(n,(o.onemask[i]*np.exp(1j*phi)
                     + o.zeromask[i])*s.v,basis=s.basis)
-
+#Conditinal Not
 def _CNOT(i,j,s,o): # i is control, j is target
     if o.skip:
         return s
@@ -154,32 +155,3 @@ class operator:
 
     def Rz(self, i, phi):
         return self.op(_Rz,[i,phi],"Rz")
-
-    def toQASM(self, measure = True, header = "IBM"):
-        r=  "OPENQASM 2.0;\n"
-        if header == "IBM":
-            r=r+"include \"qelib1.inc\";\n"
-        r=r+"qreg qr[%d];\n" % self.nbits
-        r=r+"creg cr[%d];\n" % self.nbits
-        pfx=""
-        for ops in self.m:
-            if ops[2] == "H":
-                r=r+pfx+"h qr[%d];\n" % ops[1][0]
-            elif ops[2] == "X":
-                r=r+pfx+"x qr[%d];\n" % ops[1][0]
-            elif ops[2] == "Rz":
-                r=r+pfx+"rz(%.15g*pi) qr[%d];\n" % (ops[1][1]/np.pi,ops[1][0])
-            elif ops[2] == "CNOT":
-                r=r+pfx+"cx qr[%d],qr[%d];\n" % (ops[1][0],ops[1][1])
-            elif ops[2] == "IF":
-                if ops[1][0] == None:
-                    pfx=""
-                else:
-                    pfx="if (cr==%d) " % ops[1][0]
-            elif ops[2] == "M":
-                r=r+"measure qr[%d] -> cr[%d];\n" % (ops[1][0],ops[1][1])
-            else:
-                assert(0)
-        if measure:
-            r=r+"measure qr -> cr;\n"
-        return r
