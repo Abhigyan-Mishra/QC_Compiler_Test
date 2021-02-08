@@ -37,7 +37,7 @@ for n in range(10):
     print("Measurement # %d:| %d" % (n,v0))
 ```
 #### Sample Output
-![](https://ibb.co/Jm0JJPf)
+![](image.png)
 ### Designing the Circuit
 The circuit can accept the following gates:
 Regular Unary Gates | Parameterized Unary Gates | Binary Gates
