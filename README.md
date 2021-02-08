@@ -20,6 +20,7 @@ Below are the basic requirements the simulator must accomplish:
 ### Using the simulator
 As long as the proper dependencies are installed in the local environment, the two sourcecode files (operator.py and state.py) are all that is necessary to run the simulator, and can be imported as a package.
 Eg,
+#### Sample Program
 ```
 import qcc
 #Number Of Qubits
@@ -36,7 +37,7 @@ for n in range(10):
     print("Measurement # %d:| %d" % (n,v0))
 ```
 #### Sample Output
-![](@attachment/Clipboard_2021-02-08-12-51-25.png)
+![](https://ibb.co/Jm0JJPf)
 ### Designing the Circuit
 The circuit can accept the following gates:
 Regular Unary Gates | Parameterized Unary Gates | Binary Gates
